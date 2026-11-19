@@ -1,32 +1,28 @@
-# Pencil Break — The Bundle
+# Pencil Break
 
-Old school lunch-table pencil break, built for phones. One file: `index.html`. No build step, no dependencies.
+The lunch-table classic. Aim, swipe, and snap their pencil before they snap yours.
 
-## Play
-Open `index.html` in a browser, or host it with GitHub Pages:
-1. Push this repo to GitHub.
-2. Go to **Settings → Pages**, set the source to the `main` branch, root folder.
-3. Your game will be live at `https://<your-username>.github.io/<repo-name>/`.
+## What's in this folder
+- `index.html` — the game
+- `manifest.json` — app name, colors and icons (makes it installable)
+- `sw.js` — offline support
+- `icon-192.png`, `icon-512.png`, `icon-maskable-512.png`, `icon-180.png` — app icons
+- `privacy.html` — privacy policy page (Google Play requires a link to one)
 
-## How it works
-- The aim slides along the other player's pencil. **Tap** to lock your spot.
-- **Swipe back and forth** to bend your pencil back like a sling.
-- The **eraser end** slams down. The middle breaks easiest. Hitting near their fists hurts your own pencil.
-- When their pencil is close to breaking you get **ULTRA READY**. Finish it on that swing to fire your pencil's ultra.
-- First pencil to snap loses the round. Best of 3.
+## Put it online (GitHub Pages)
+1. On github.com, create a new **public** repository named `pencil-break`.
+2. Tap **Add file → Upload files** and upload **everything in this folder** (keep the folder layout the same).
+3. Go to **Settings → Pages**, set Source to **Deploy from a branch**, pick **main** and **/(root)**, and save.
+4. After a minute or two the game is live at:
+   `https://YOUR-GITHUB-NAME.github.io/pencil-break/`
 
-## Features
-- 8 pencils with their own stats and ultra finishers
-- Lunch Table Ladder (7 opponents, unlock their pencils)
-- Around the World tour (7 cities, one loss and you're out)
-- Quick Match and 2-player pass-the-phone
-- Ranks from Rookie up to Pencil Break King
-- Scoreboard with career stats and badges
-- 3 daily challenges
-- Sound and vibration toggles
+## Make the Android app
+1. Open **pwabuilder.com** and paste the link above.
+2. Choose **Package for stores → Android**, then download the package.
+3. Upload the `.aab` file from that download to the Google Play Console.
+4. Keep the signing key file PWABuilder gives you. You need it for every future update.
 
-## Saving
-Progress (rank, stats, unlocks, challenges) is saved in the browser with `localStorage`, so it stays on that phone/browser.
-
-## Leaderboard note
-The **Online** leaderboard tab only works when the page runs on claude.ai. On GitHub Pages it shows a message instead, and **The Table** tab (you vs the CPU rivals) works everywhere. To run a real online leaderboard from GitHub Pages you'd need to connect a backend like Firebase or Supabase.
+## Before you submit
+- Open `privacy.html` and replace `YOUR-EMAIL@example.com` with your email.
+- Privacy policy link for Play Console: `https://YOUR-GITHUB-NAME.github.io/pencil-break/privacy.html`
+- When you upload a new version of the game, change `pencil-break-v1` in `sw.js` to `pencil-break-v2` (then v3, and so on) so players get the update.

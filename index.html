@@ -4,6 +4,14 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no,viewport-fit=cover">
 <title>Pencil Break — The Bundle</title>
+<meta name="description" content="The lunch-table classic. Aim, swipe, and snap their pencil before they snap yours.">
+<link rel="manifest" href="manifest.json">
+<meta name="theme-color" content="#1a120c">
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<link rel="icon" type="image/png" href="icon-192.png">
+<link rel="apple-touch-icon" href="icon-180.png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Bangers&family=Permanent+Marker&display=swap" rel="stylesheet">
 <style>
@@ -666,7 +674,7 @@ function renderBoard(){const lb=$('#lb');lb.innerHTML='';const note=$('#bdNote')
     const list=RIVALS.map(r=>({tag:r[0],rp:r[1],cpu:true}));list.push({tag:PROF.tag||'YOU',rp:PROF.rp,me:true});list.sort((a,b)=>b.rp-a.rp);
     list.forEach((r,i)=>lb.append(row(i+1,r.tag,(i===0?'PENCIL BREAK KING · ':'')+(r.me?'YOU · ':'CPU · ')+rankOf(r.rp).name,r.rp,r.me,i===0)));return}
   $('#bdTag').style.display=DB?'block':'none';
-  if(!DB){note.textContent='The online board isn\u2019t connected in this version. Check The Table tab to see where you rank against the CPU rivals.';return}
+  if(!DB){note.textContent='The online board isn\u2019t available in this version. Check THE TABLE to see where you rank.';return}
   if(!canWrite)note.textContent='You can see the board, but your access to this page is view-only, so your score can\u2019t post. Ask the owner for Contributor access.';
   else note.textContent=BOARD_ERR||'Everyone who plays this page. #1 wears the crown.';
   if(!BOARD){if(!BOARD_ERR){const d=document.createElement('div');d.className='note';d.textContent='Loading\u2026';lb.append(d)}return}
@@ -964,5 +972,7 @@ if(document.fonts&&document.fonts.ready)document.fonts.ready.then(()=>buildBG())
 
 })();
 </script>
+<script>if('serviceWorker' in navigator){addEventListener('load',()=>{navigator.serviceWorker.register('sw.js').catch(()=>{});});}</script>
+<script>if(!(window.claude&&window.claude.use)){document.querySelectorAll('.tab[data-tab="online"]').forEach(function(t){t.style.display='none'});try{BTAB='table'}catch(e){}document.querySelectorAll('.tab').forEach(function(x){x.classList.toggle('on',x.dataset.tab==='table')});}</script>
 </body>
 </html>
